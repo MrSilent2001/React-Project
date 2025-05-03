@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
-import PrivateRoute from "./components/PrivateRoute";
 import ProductProvider from "./contexts/ProductContext";
 import CartProvider from "./contexts/CartContext";
 import SidebarProvider from "./contexts/SidebarContext";
