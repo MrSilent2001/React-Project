@@ -29,14 +29,21 @@ const CartProvider = ({ children }) => {
 
 	// add to cart
 	const addToCart = (product, id) => {
+		if (!product || id === undefined) {
+			console.error("Invalid product or id");
+			return;
+		}
+	
+		// Convert IDs to same type for comparison
+		const productId = String(id);
+		
 		const newItem = { ...product, amount: 1 };
 		// check if the item is already in the cart
-		const cartItem = cart.find((item) => {
-			return item.id === id;
-		});
+		const cartItem = cart.find((item) => String(item.id) === productId);
+		
 		if (cartItem) {
 			const newCart = [...cart].map((item) => {
-				if (item.id === id) {
+				if (String(item.id) === productId) {
 					return { ...item, amount: cartItem.amount + 1 };
 				} else return item;
 			});
